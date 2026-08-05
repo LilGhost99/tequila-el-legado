@@ -178,6 +178,35 @@
   .feat h4{font-family:var(--serif);font-weight:500;font-size:21px;margin:14px 0 10px;}
   .feat p{font-size:14.5px;color:rgba(26,26,26,.68);}
 
+  /* CANCION */
+  .cancion{background:var(--negro);color:var(--crema);position:relative;overflow:hidden;}
+  .cancion .eyebrow{color:var(--cobre-claro);}
+  .cancion-grid{display:grid;grid-template-columns:1fr .8fr;gap:70px;align-items:center;}
+  .player-card{
+    border:1px solid rgba(217,166,108,.35);
+    padding:44px;background:linear-gradient(160deg, rgba(184,107,53,.1), transparent 60%);
+    text-align:center;
+  }
+  .play-btn{
+    width:84px;height:84px;border-radius:50%;
+    border:1px solid var(--cobre-claro);
+    background:transparent;color:var(--crema);
+    display:flex;align-items:center;justify-content:center;
+    margin:0 auto 22px;cursor:pointer;
+    transition:background .3s ease, transform .3s ease;
+  }
+  .play-btn:hover{background:rgba(217,166,108,.15);transform:scale(1.04);}
+  .play-btn.loading{opacity:.4;cursor:wait;pointer-events:none;}
+  .play-btn.loading svg{animation:pulse 1.4s ease-in-out infinite;}
+  .play-btn svg{width:26px;height:26px;fill:var(--crema);}
+  .player-title{font-family:var(--serif);font-style:italic;font-size:22px;color:var(--cobre-claro);}
+  .player-sub{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:rgba(253,251,247,.5);margin-top:8px;}
+  .waveform{display:flex;align-items:flex-end;justify-content:center;gap:4px;height:36px;margin-top:26px;}
+  .waveform span{width:3px;background:var(--cobre);opacity:.5;transition:height .15s ease;}
+  .qr-block{display:flex;flex-direction:column;align-items:center;gap:16px;text-align:center;}
+  .qr-block img{width:150px;height:150px;background:var(--crema);padding:12px;border-radius:2px;}
+  .qr-caption{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:rgba(253,251,247,.55);}
+
   /* MERCADO */
   .mercado{background:var(--negro);color:var(--crema);}
   .mercado .eyebrow{color:var(--cobre-claro);}
@@ -364,6 +393,35 @@
   </div>
 </section>
 
+<svg class="divider" viewBox="0 0 1200 64" preserveAspectRatio="none" style="background:var(--negro)">
+  <path d="M0,32 C120,32 120,12 240,12 C360,12 360,52 480,52 C600,52 600,20 720,20 C840,20 840,44 960,44 C1080,44 1080,32 1200,32" fill="none" stroke="#B86B35" stroke-width="1.4" opacity="0.6"/>
+</svg>
+
+<section class="cancion" id="cancion">
+  <div class="wrap">
+    <span class="eyebrow">05 — Fonoteca de Marca</span>
+    <h2 style="margin-top:10px;font-size:clamp(28px,3.6vw,42px);max-width:640px;">La canción que Don Silvestre tocaba en Los Altos</h2>
+    <p style="margin-top:18px;max-width:560px;color:rgba(253,251,247,.7);font-size:15.5px;">
+      Cada etiqueta lleva un código QR que reproduce la melodía original de su violín — la misma que cruzó el Atlántico en 1923. Escúchala aquí:
+    </p>
+    <div class="cancion-grid" style="margin-top:56px;">
+      <div class="player-card">
+        <button class="play-btn loading" id="playBtn" aria-label="Reproducir">
+          <svg id="playIcon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          <svg id="pauseIcon" viewBox="0 0 24 24" style="display:none;"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
+        </button>
+        <div class="player-title">El Son de Don Silvestre</div>
+        <div class="player-sub">Vals · Violín solo · 0:24</div>
+        <div class="waveform" id="waveform"></div>
+      </div>
+      <div class="qr-block">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAXIAAAFyCAIAAABnRsZeAAAHuElEQVR4nO3dPW5sNxpFUcvwNIwOPP8hOWh4EAoEAZ06Itzm/kDeq7XShyrVj7TB4IDv4/vr8xeAzq+nXwDwNrICxGQFiMkKEJMVICYrQExWgJisADFZAWKyAsRkBYjJChCTFSAmK0BMVoCYrAAxWQFisgLEZAWI/bbz4N//80f1Oi7x13//XPzr+v2uH3vKzmve+X7nnnnH3Hf00/4W1pxWgJisADFZAWKyAsRkBYjJChCTFSAmK0BMVoDY1sp27Ymr0zt/7p2f5I5Ta9dT38Kd3+Dc34LTChCTFSAmK0BMVoCYrAAxWQFisgLEZAWIyQoQG1zZrs0t/OYWje+7+XXudt4nropP/dwn/i2sOa0AMVkBYrICxGQFiMkKEJMVICYrQExWgJisALFjK9snunM5euc29NRueG3nVd15H+2dnFaAmKwAMVkBYrICxGQFiMkKEJMVICYrQExWgJiV7f9hZ6O5s+C8c0d7J1vYGzitADFZAWKyAsRkBYjJChCTFSAmK0BMVoCYrACxYytba8i/e9+edecd/bQ7Zd/3jpxWgJisADFZAWKyAsRkBYjJChCTFSAmK0BMVoDY4Mr2icvRtZ315/seu+OnLXTf97ew5rQCxGQFiMkKEJMVICYrQExWgJisADFZAWKyAsQ+vr8+T7+Gx7hzwbl2at85t6M99cz8c04rQExWgJisADFZAWKyAsRkBYjJChCTFSAmK0Bsa2V76p7UO29g3TG3333iLap33jg7d2fw2p1/ZWtOK0BMVoCYrAAxWQFisgLEZAWIyQoQkxUgJitA7NK7bO+8NfbUq7rzftY7b8k95c7V+KllsNMKEJMVICYrQExWgJisADFZAWKyAsRkBYjJChAbvMv2ie68GXTtibeovu923jvvV3aXLfASsgLEZAWIyQoQkxUgJitATFaAmKwAMVkBYr/tPHhuZ/nEx865c0c754l3Bu+4cym7w2kFiMkKEJMVICYrQExWgJisADFZAWKyAsRkBYhtrWyfaGez+MS949zmeG3n/Z76rNaeuO49tVd2WgFisgLEZAWIyQoQkxUgJitATFaAmKwAMVkBYoMr2yfeODu3Kz21pNxxald658p2zs5vzqn7d9ecVoCYrAAxWQFisgLEZAWIyQoQkxUgJitATFaA2ODK9tSO9tRS9olr1/c5td/9aXckrzmtADFZAWKyAsRkBYjJChCTFSAmK0BMVoCYrACxj++vz3/94CfeR3vnTbc7P/fU5njtzjtW1973SZ7a4DqtADFZAWKyAsRkBYjJChCTFSAmK0BMVoCYrACxwbts1+b2f0+86fbOVfGd5r7fU8vgJy6S15xWgJisADFZAWKyAsRkBYjJChCTFSAmK0BMVoDY4Mr21J5155nXTr2jU7tSe+Xqmefc+X6dVoCYrAAxWQFisgLEZAWIyQoQkxUgJitATFaA2Mf31+eRH2wp+8898a7TU5vU930Ldy7O15xWgJisADFZAWKyAsRkBYjJChCTFSAmK0BMVoDY1l22d95WO3c/69zOcu6Z55aUp76jHT9tKXvqVmCnFSAmK0BMVoCYrAAxWQFisgLEZAWIyQoQkxUgtnWX7dyedcepn7vjfa95zhMXyTue+H6dVoCYrAAxWQFisgLEZAWIyQoQkxUgJitATFaA2NZdtmt3/l/2O3vWucfOObXffd+tsWunvv2dZ3aXLfAYsgLEZAWIyQoQkxUgJitATFaAmKwAMVkBYlsr27mF35235K6d2uDOfRqnnnnticvgUxvcU38LTitATFaAmKwAMVkBYrICxGQFiMkKEJMVICYrQOzSu2x33LngnNvRnrKzwd1ZnZ66jXjtfcvvHU4rQExWgJisADFZAWKyAsRkBYjJChCTFSAmK0Ds4/vr818/+M4bZ0+tMOfWvXeubJ94P+udW9i1J/5eOa0AMVkBYrICxGQFiMkKEJMVICYrQExWgJisALGtu2yfeD/rnYvVtVPr3jU/tzJ37+8pTitATFaAmKwAMVkBYrICxGQFiMkKEJMVICYrQGzwLtsnmrvr9NSNpHfeN/xET7wj+RSnFSAmK0BMVoCYrAAxWQFisgLEZAWIyQoQkxUgtnWX7dqd68BTy9GdJeVP22jOuXNFvTb3Gzv3mp1WgJisADFZAWKyAsRkBYjJChCTFSAmK0BMVoDY4Mp27YnbwVNr11PP/D477/fUZzW3DJ77vXJaAWKyAsRkBYjJChCTFSAmK0BMVoCYrAAxWQFix1a2T3TnJnXuBtZTt+TeuWfdMfdJ3rmxdloBYrICxGQFiMkKEJMVICYrQExWgJisADFZAWJWtplTt9XOPXZtbt27Y+f93vmO5l7V3Gt2WgFisgLEZAWIyQoQkxUgJitATFaAmKwAMVkBYsdWtnMLvzlza9e520znblE9te6de+ZTTq175343nFaAmKwAMVkBYrICxGQFiMkKEJMVICYrQExWgNjgyvaJe8e1Oxerc059g3dujk8tg+/cdq85rQAxWQFisgLEZAWIyQoQkxUgJitATFaAmKwAsY/vr8/TrwF4FacVICYrQExWgJisADFZAWKyAsRkBYjJChCTFSAmK0BMVoCYrAAxWQFisgLEZAWIyQoQkxUgJitATFaA2P8AGZ/iK4y1Ki8AAAAASUVORK5CYII=" alt="Código QR de la canción">
+        <div class="qr-caption">Escanea desde la etiqueta<br>para escuchar en tu celular</div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="mercado" id="mercado">
   <div class="wrap">
     <span class="eyebrow">04 — Posicionamiento</span>
@@ -426,10 +484,108 @@
   </div>
 </footer>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.7.77/Tone.js"></script>
 <script>
   const header = document.getElementById('siteHeader');
   window.addEventListener('scroll', () => {
     header.classList.toggle('scrolled', window.scrollY > 40);
+  });
+
+  // --- "El Son de Don Silvestre": melodía generada, estilo vals melancólico ---
+  const waveform = document.getElementById('waveform');
+  const BARCOUNT = 28;
+  for (let i = 0; i < BARCOUNT; i++) {
+    const bar = document.createElement('span');
+    bar.style.height = '4px';
+    waveform.appendChild(bar);
+  }
+  const bars = waveform.querySelectorAll('span');
+
+  const reverb = new Tone.Reverb({ decay: 3.2, wet: 0.3 }).toDestination();
+  const playBtn = document.getElementById('playBtn');
+  const playerSub = document.querySelector('.player-sub');
+  let sampleReady = false;
+  playBtn.classList.add('loading');
+  playerSub.textContent = 'Cargando muestras de violín…';
+
+  const violin = new Tone.Sampler({
+    urls: {
+      G3: "G3.mp3", A3: "A3.mp3",
+      C4: "C4.mp3", E4: "E4.mp3", G4: "G4.mp3", A4: "A4.mp3",
+      C5: "C5.mp3", E5: "E5.mp3", G5: "G5.mp3", A5: "A5.mp3",
+      C6: "C6.mp3", E6: "E6.mp3", G6: "G6.mp3", A6: "A6.mp3",
+      C7: "C7.mp3"
+    },
+    baseUrl: "https://cdn.jsdelivr.net/npm/tonejs-instrument-violin-mp3@1.1.1/",
+    onload: () => {
+      sampleReady = true;
+      playBtn.classList.remove('loading');
+      playerSub.textContent = 'Vals · Violín solo · 0:24';
+    },
+    release: 0.9
+  }).connect(reverb);
+  violin.volume.value = -4;
+
+  // Vals en Re menor, 3/4 — motivo nostálgico, 8 compases, en loop
+  const melody = [
+    ['D4','8n'], ['F4','8n'], ['A4','4n'],
+    ['G4','8n'], ['F4','8n'], ['E4','4n'],
+    ['D4','8n'], ['E4','8n'], ['F4','4n'],
+    ['A3','4n'], ['D4','4n'],
+    ['E4','8n'], ['G4','8n'], ['F4','4n'],
+    ['D4','8n'], ['C4','8n'], ['D4','4n'],
+    ['A3','8n'], ['C4','8n'], ['D4','4n'],
+    ['F4','4n'], ['E4','4n'], ['D4','2n']
+  ];
+
+  let part = null;
+  let playing = false;
+  const playIcon = document.getElementById('playIcon');
+  const pauseIcon = document.getElementById('pauseIcon');
+
+  function animateBars(active){
+    bars.forEach(b => {
+      if(active){
+        b.style.height = (4 + Math.random()*30) + 'px';
+      } else {
+        b.style.height = '4px';
+      }
+    });
+  }
+  let barInterval = null;
+
+  playBtn.addEventListener('click', async () => {
+    if (!sampleReady) return;
+    await Tone.start();
+    if (!playing) {
+      Tone.Transport.bpm.value = 108;
+      let cursor = 0;
+      const events = melody.map(n => {
+        const dur = Tone.Time(n[1]).toSeconds();
+        const ev = [cursor, n];
+        cursor += dur;
+        return ev;
+      });
+      part = new Tone.Part((time, ev) => {
+        violin.triggerAttackRelease(ev[0], ev[1], time);
+      }, events).start(0);
+      part.loop = true;
+      part.loopEnd = cursor;
+
+      Tone.Transport.start();
+      playing = true;
+      playIcon.style.display = 'none';
+      pauseIcon.style.display = 'block';
+      barInterval = setInterval(() => animateBars(true), 130);
+    } else {
+      Tone.Transport.stop();
+      if (part) part.dispose();
+      playing = false;
+      playIcon.style.display = 'block';
+      pauseIcon.style.display = 'none';
+      clearInterval(barInterval);
+      animateBars(false);
+    }
   });
 </script>
 

@@ -80,7 +80,19 @@
     text-align:center;
     padding:140px 24px 80px;
     position:relative;
+    overflow:hidden;
   }
+  .agave-field{pointer-events:none;}
+  .agave-hero{
+    position:absolute;left:0;right:0;bottom:0;width:100%;height:150px;
+    z-index:0;opacity:.85;
+  }
+  .historia{background:var(--crema);position:relative;overflow:hidden;}
+  .agave-historia{
+    position:absolute;right:-10px;bottom:-8px;width:300px;height:auto;
+    z-index:0;opacity:.13;
+  }
+  .historia .wrap{position:relative;z-index:1;}
   .hero-logo{
     width:150px;height:150px;object-fit:contain;
     filter:brightness(0) invert(1);
@@ -171,7 +183,7 @@
 
   /* INNOVACION */
   .innovacion{background:var(--crema);}
-  .feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(26,26,26,.12);border:1px solid rgba(26,26,26,.12);}
+  .feat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(26,26,26,.12);border:1px solid rgba(26,26,26,.12);}
   .feat{background:var(--crema);padding:40px 34px;transition:background .35s ease;}
   .feat:hover{background:#f6f0e6;}
   .feat .num{font-family:var(--serif);font-style:italic;font-size:15px;color:var(--cobre);}
@@ -231,6 +243,7 @@
   .foot-brand p{font-size:14px;color:rgba(253,251,247,.65);max-width:280px;}
   footer h5{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--cobre-claro);margin-bottom:16px;}
   footer .foot-col p, footer .foot-col a{display:block;font-size:13.5px;color:rgba(253,251,247,.7);margin-bottom:10px;line-height:1.6;}
+  footer .foot-col a:hover{color:var(--cobre-claro);}
   .badges{display:flex;gap:10px;margin-top:16px;}
   .badge{
     width:34px;height:34px;border:1px solid rgba(253,251,247,.35);border-radius:50%;
@@ -262,6 +275,7 @@
       <li><a href="#historia">Historia</a></li>
       <li><a href="#producto">Producto</a></li>
       <li><a href="#innovacion">Innovación</a></li>
+      <li><a href="#cancion">Canción</a></li>
       <li><a href="#mercado">Mercado</a></li>
       <li><a href="#contacto">Contacto</a></li>
     </ul>
@@ -274,6 +288,21 @@
   <div class="sub">Tequila 100% Agave Azul · Jerez Cask Finish</div>
   <p class="desc">En 1923, Don Silvestre Legado cruzó el Atlántico con su violín y una receta escondida en el forro. Este tequila es su legado.</p>
   <div class="scroll-cue">Descubre la historia</div>
+  <svg class="agave-field agave-hero" viewBox="0 0 1200 320" preserveAspectRatio="xMidYMax slice" style="opacity:1">
+    <path d="M40.0,291.4 Q29.3,285.6 -1.6,279.9 Q30.7,290.5 40.0,291.4 Z M40.0,291.4 Q29.9,278.4 3.6,264.4 Q32.3,289.0 40.0,291.4 Z M40.0,291.4 Q31.5,273.5 9.0,254.6 Q33.4,288.2 40.0,291.4 Z M40.0,291.4 Q35.3,268.2 22.6,244.1 Q36.2,287.4 40.0,291.4 Z M40.0,291.4 Q40.5,268.3 42.1,246.1 Q40.5,288.1 40.0,291.4 Z M40.0,291.4 Q43.0,268.1 52.4,246.2 Q42.9,288.3 40.0,291.4 Z M40.0,291.4 Q47.2,272.1 68.1,253.3 Q46.3,288.5 40.0,291.4 Z M40.0,291.4 Q49.3,276.5 76.3,261.8 Q48.1,289.1 40.0,291.4 Z M40.0,291.4 Q47.7,284.6 76.1,278.9 Q49.0,290.7 40.0,291.4 Z" fill="#B86B35"/>
+    <path d="M150.0,303.9 Q136.9,296.1 98.2,288.6 Q138.3,302.7 150.0,303.9 Z M150.0,303.9 Q138.8,289.1 103.7,275.4 Q139.2,301.9 150.0,303.9 Z M150.0,303.9 Q138.4,284.3 108.6,263.1 Q141.3,300.2 150.0,303.9 Z M150.0,303.9 Q142.5,280.6 122.0,256.5 Q143.9,299.9 150.0,303.9 Z M150.0,303.9 Q147.1,275.7 138.0,249.9 Q147.2,300.3 150.0,303.9 Z M150.0,303.9 Q150.8,275.1 153.5,249.3 Q150.8,300.5 150.0,303.9 Z M150.0,303.9 Q154.9,276.5 167.4,246.7 Q153.6,298.6 150.0,303.9 Z M150.0,303.9 Q157.6,278.5 178.2,252.2 Q156.1,299.6 150.0,303.9 Z M150.0,303.9 Q159.3,283.5 185.8,263.1 Q157.9,300.7 150.0,303.9 Z M150.0,303.9 Q161.7,290.4 196.4,277.4 Q160.5,301.9 150.0,303.9 Z M150.0,303.9 Q165.6,295.6 207.5,287.0 Q162.4,302.4 150.0,303.9 Z" fill="#B86B35"/>
+    <path d="M260.0,304.9 Q248.5,296.2 209.4,288.6 Q247.8,304.0 260.0,304.9 Z M260.0,304.9 Q247.8,289.1 213.0,273.3 Q249.6,302.4 260.0,304.9 Z M260.0,304.9 Q249.1,280.6 221.6,253.8 Q252.0,300.2 260.0,304.9 Z M260.0,304.9 Q255.5,278.7 242.5,252.9 Q256.1,301.0 260.0,304.9 Z M260.0,304.9 Q261.0,276.1 263.9,248.6 Q260.9,300.9 260.0,304.9 Z M260.0,304.9 Q264.9,275.9 278.5,246.3 Q264.0,300.1 260.0,304.9 Z M260.0,304.9 Q268.2,281.1 291.6,257.4 Q267.0,301.3 260.0,304.9 Z M260.0,304.9 Q272.9,289.5 307.9,273.5 Q270.4,302.3 260.0,304.9 Z M260.0,304.9 Q272.2,297.4 310.3,290.4 Q271.7,303.9 260.0,304.9 Z" fill="#B86B35"/>
+    <path d="M340.0,285.0 Q331.4,278.9 304.8,273.2 Q331.9,284.2 340.0,285.0 Z M340.0,285.0 Q330.2,273.7 301.0,262.7 Q331.1,283.4 340.0,285.0 Z M340.0,285.0 Q333.7,269.5 314.4,254.9 Q334.1,282.9 340.0,285.0 Z M340.0,285.0 Q334.5,267.3 317.7,250.4 Q334.9,282.6 340.0,285.0 Z M340.0,285.0 Q336.9,264.7 327.0,245.8 Q337.0,282.4 340.0,285.0 Z M340.0,285.0 Q340.1,263.6 340.3,243.3 Q340.1,282.1 340.0,285.0 Z M340.0,285.0 Q342.6,264.9 351.5,247.3 Q342.8,282.8 340.0,285.0 Z M340.0,285.0 Q345.8,267.1 361.6,248.5 Q344.7,282.0 340.0,285.0 Z M340.0,285.0 Q348.2,271.1 370.6,256.7 Q346.6,282.7 340.0,285.0 Z M340.0,285.0 Q349.8,271.6 377.9,258.3 Q348.4,283.0 340.0,285.0 Z M340.0,285.0 Q350.8,279.3 382.4,273.6 Q349.5,284.2 340.0,285.0 Z" fill="#B86B35"/>
+    <path d="M430.0,280.7 Q417.0,275.0 383.1,268.8 Q420.1,279.7 430.0,280.7 Z M430.0,280.7 Q420.2,265.6 391.3,250.9 Q421.2,278.5 430.0,280.7 Z M430.0,280.7 Q423.4,262.5 402.7,245.6 Q423.6,278.4 430.0,280.7 Z M430.0,280.7 Q426.9,257.3 418.0,233.8 Q427.3,277.1 430.0,280.7 Z M430.0,280.7 Q429.8,257.1 429.3,234.9 Q429.8,277.5 430.0,280.7 Z M430.0,280.7 Q433.6,258.0 444.2,235.9 Q433.2,277.4 430.0,280.7 Z M430.0,280.7 Q436.4,264.1 455.0,247.9 Q435.6,278.3 430.0,280.7 Z M430.0,280.7 Q439.1,267.4 468.0,255.1 Q438.9,279.0 430.0,280.7 Z M430.0,280.7 Q439.3,273.0 468.7,265.8 Q439.0,279.7 430.0,280.7 Z" fill="#B86B35"/>
+    <path d="M520.0,277.4 Q512.0,271.7 488.1,266.1 Q512.8,276.5 520.0,277.4 Z M520.0,277.4 Q514.6,268.4 497.1,260.2 Q514.6,276.3 520.0,277.4 Z M520.0,277.4 Q515.4,265.3 500.3,254.5 Q515.3,276.0 520.0,277.4 Z M520.0,277.4 Q515.8,261.7 504.6,245.2 Q516.7,274.6 520.0,277.4 Z M520.0,277.4 Q518.8,260.1 515.4,243.2 Q519.0,274.9 520.0,277.4 Z M520.0,277.4 Q520.7,261.0 522.6,243.3 Q520.5,274.3 520.0,277.4 Z M520.0,277.4 Q522.7,263.3 531.4,250.3 Q522.7,275.6 520.0,277.4 Z M520.0,277.4 Q524.5,265.3 538.2,253.9 Q524.2,275.8 520.0,277.4 Z M520.0,277.4 Q526.6,268.4 546.1,259.6 Q525.9,276.1 520.0,277.4 Z M520.0,277.4 Q527.7,272.6 552.0,268.3 Q527.5,276.8 520.0,277.4 Z" fill="#B86B35"/>
+    <path d="M610.0,305.7 Q597.5,297.4 559.1,289.6 Q598.3,304.6 610.0,305.7 Z M610.0,305.7 Q596.4,289.3 560.9,271.7 Q599.6,302.7 610.0,305.7 Z M610.0,305.7 Q600.8,281.6 574.2,257.6 Q602.0,302.0 610.0,305.7 Z M610.0,305.7 Q606.4,279.2 596.0,252.9 Q606.9,301.7 610.0,305.7 Z M610.0,305.7 Q609.6,279.7 608.6,252.9 Q609.7,301.4 610.0,305.7 Z M610.0,305.7 Q614.2,279.1 627.1,253.8 Q613.9,302.0 610.0,305.7 Z M610.0,305.7 Q620.3,281.5 650.3,257.6 Q619.0,302.1 610.0,305.7 Z M610.0,305.7 Q620.0,288.5 653.2,273.2 Q620.3,303.7 610.0,305.7 Z M610.0,305.7 Q624.9,296.1 664.9,286.1 Q621.8,304.1 610.0,305.7 Z" fill="#B86B35"/>
+    <path d="M700.0,285.0 Q690.6,278.8 662.0,272.8 Q691.3,284.2 700.0,285.0 Z M700.0,285.0 Q692.0,274.2 666.1,264.3 Q692.0,283.7 700.0,285.0 Z M700.0,285.0 Q693.1,267.0 671.1,250.5 Q693.2,282.8 700.0,285.0 Z M700.0,285.0 Q695.3,266.6 682.3,247.7 Q696.1,282.0 700.0,285.0 Z M700.0,285.0 Q696.4,260.8 686.7,235.5 Q697.1,280.8 700.0,285.0 Z M700.0,285.0 Q700.6,261.9 702.0,236.7 Q700.4,280.6 700.0,285.0 Z M700.0,285.0 Q703.3,262.5 711.8,238.5 Q702.5,281.0 700.0,285.0 Z M700.0,285.0 Q705.7,263.9 721.1,241.9 Q704.6,281.4 700.0,285.0 Z M700.0,285.0 Q708.2,270.0 730.6,254.5 Q706.6,282.5 700.0,285.0 Z M700.0,285.0 Q710.7,272.2 740.1,259.0 Q708.7,282.9 700.0,285.0 Z M700.0,285.0 Q711.9,278.3 744.5,271.3 Q709.7,283.9 700.0,285.0 Z" fill="#B86B35"/>
+    <path d="M790.0,286.7 Q779.9,280.3 746.2,274.6 Q779.5,286.0 790.0,286.7 Z M790.0,286.7 Q780.4,273.0 753.3,259.2 Q781.9,284.5 790.0,286.7 Z M790.0,286.7 Q781.5,266.4 757.1,246.3 Q782.7,283.6 790.0,286.7 Z M790.0,286.7 Q785.8,263.6 773.3,241.3 Q786.2,283.4 790.0,286.7 Z M790.0,286.7 Q790.7,264.1 792.6,241.5 Q790.6,283.2 790.0,286.7 Z M790.0,286.7 Q793.2,262.5 803.1,240.0 Q793.0,283.6 790.0,286.7 Z M790.0,286.7 Q796.7,269.5 816.6,252.9 Q796.0,284.3 790.0,286.7 Z M790.0,286.7 Q798.1,272.9 823.1,259.9 Q797.7,284.9 790.0,286.7 Z M790.0,286.7 Q800.2,279.3 829.9,272.0 Q799.0,285.6 790.0,286.7 Z" fill="#B86B35"/>
+    <path d="M880.0,272.9 Q874.7,268.6 855.4,265.0 Q873.9,272.4 880.0,272.9 Z M880.0,272.9 Q874.5,263.7 856.5,255.3 Q874.5,271.7 880.0,272.9 Z M880.0,272.9 Q874.6,261.2 860.2,248.9 Q875.8,270.8 880.0,272.9 Z M880.0,272.9 Q877.6,259.0 870.2,246.2 Q877.7,271.1 880.0,272.9 Z M880.0,272.9 Q880.5,257.7 881.9,241.9 Q880.4,270.2 880.0,272.9 Z M880.0,272.9 Q882.0,259.4 887.4,245.6 Q881.6,270.7 880.0,272.9 Z M880.0,272.9 Q884.7,261.4 897.3,249.2 Q883.7,270.8 880.0,272.9 Z M880.0,272.9 Q886.3,263.2 904.6,253.6 Q885.5,271.4 880.0,272.9 Z M880.0,272.9 Q887.5,267.5 908.5,262.1 Q886.3,272.0 880.0,272.9 Z" fill="#B86B35"/>
+    <path d="M970.0,274.5 Q963.2,269.8 941.1,265.5 Q963.2,274.0 970.0,274.5 Z M970.0,274.5 Q963.9,265.8 945.2,257.5 Q964.3,273.4 970.0,274.5 Z M970.0,274.5 Q964.6,261.8 947.5,250.1 Q964.8,272.9 970.0,274.5 Z M970.0,274.5 Q965.9,259.0 954.2,243.5 Q966.5,272.1 970.0,274.5 Z M970.0,274.5 Q967.6,260.2 961.3,245.0 Q968.1,272.0 970.0,274.5 Z M970.0,274.5 Q970.0,259.5 970.0,244.6 Q970.0,272.2 970.0,274.5 Z M970.0,274.5 Q971.3,259.6 975.8,246.3 Q971.4,272.9 970.0,274.5 Z M970.0,274.5 Q973.7,259.3 985.4,245.1 Q973.6,272.5 970.0,274.5 Z M970.0,274.5 Q975.9,262.8 991.5,250.5 Q974.6,272.5 970.0,274.5 Z M970.0,274.5 Q977.4,265.5 996.8,255.8 Q975.7,272.9 970.0,274.5 Z M970.0,274.5 Q976.1,270.9 997.7,267.9 Q976.8,274.2 970.0,274.5 Z" fill="#B86B35"/>
+    <path d="M1060.0,300.0 Q1046.4,292.3 1003.2,285.2 Q1046.7,299.0 1060.0,300.0 Z M1060.0,300.0 Q1047.9,284.4 1008.7,270.2 Q1047.9,298.1 1060.0,300.0 Z M1060.0,300.0 Q1052.3,278.2 1024.6,259.9 Q1051.2,297.9 1060.0,300.0 Z M1060.0,300.0 Q1053.1,270.4 1032.9,241.4 Q1053.9,295.5 1060.0,300.0 Z M1060.0,300.0 Q1057.4,266.1 1049.9,233.3 Q1057.7,295.1 1060.0,300.0 Z M1060.0,300.0 Q1061.0,270.7 1064.4,245.4 Q1061.1,296.9 1060.0,300.0 Z M1060.0,300.0 Q1064.8,273.1 1081.8,250.3 Q1065.4,297.3 1060.0,300.0 Z M1060.0,300.0 Q1071.7,277.1 1102.5,252.9 Q1069.0,295.8 1060.0,300.0 Z M1060.0,300.0 Q1070.4,284.0 1106.0,270.1 Q1071.2,298.3 1060.0,300.0 Z M1060.0,300.0 Q1074.5,290.5 1116.3,281.2 Q1072.6,298.5 1060.0,300.0 Z" fill="#B86B35"/>
+    <path d="M1150.0,287.0 Q1138.5,280.7 1107.0,274.2 Q1140.6,286.0 1150.0,287.0 Z M1150.0,287.0 Q1139.8,274.0 1113.2,259.9 Q1142.2,284.6 1150.0,287.0 Z M1150.0,287.0 Q1142.5,270.3 1122.6,252.7 Q1144.1,284.1 1150.0,287.0 Z M1150.0,287.0 Q1145.8,267.0 1133.4,247.5 Q1146.2,284.1 1150.0,287.0 Z M1150.0,287.0 Q1147.8,264.0 1142.0,240.1 Q1148.3,283.1 1150.0,287.0 Z M1150.0,287.0 Q1150.9,264.3 1153.5,240.4 Q1150.7,283.0 1150.0,287.0 Z M1150.0,287.0 Q1155.4,266.3 1169.3,244.1 Q1154.1,283.2 1150.0,287.0 Z M1150.0,287.0 Q1157.2,270.5 1178.9,254.6 Q1156.6,284.7 1150.0,287.0 Z M1150.0,287.0 Q1159.0,276.1 1185.0,265.4 Q1157.8,285.4 1150.0,287.0 Z M1150.0,287.0 Q1161.4,280.1 1194.6,273.2 Q1160.0,286.0 1150.0,287.0 Z" fill="#B86B35"/>
+  </svg>
 </section>
 
 <svg class="divider" viewBox="0 0 1200 64" preserveAspectRatio="none" style="background:var(--negro)">
@@ -281,6 +310,12 @@
 </svg>
 
 <section class="historia" id="historia">
+  <svg class="agave-field agave-historia" viewBox="0 0 480 280" preserveAspectRatio="xMidYMax slice">
+    <path d="M110.0,257.0 Q98.1,248.6 61.2,240.7 Q98.7,255.9 110.0,257.0 Z M110.0,257.0 Q99.8,240.5 67.9,225.1 Q100.2,254.9 110.0,257.0 Z M110.0,257.0 Q101.9,238.0 75.1,221.0 Q101.7,254.8 110.0,257.0 Z M110.0,257.0 Q103.8,232.4 88.1,205.4 Q105.4,252.3 110.0,257.0 Z M110.0,257.0 Q108.3,232.3 103.0,208.7 Q108.4,253.6 110.0,257.0 Z M110.0,257.0 Q111.8,234.1 116.9,211.4 Q111.6,253.5 110.0,257.0 Z M110.0,257.0 Q115.5,230.9 131.4,205.0 Q114.8,253.1 110.0,257.0 Z M110.0,257.0 Q119.2,236.3 143.1,214.0 Q117.0,253.2 110.0,257.0 Z M110.0,257.0 Q120.2,244.9 148.3,232.5 Q118.4,255.0 110.0,257.0 Z M110.0,257.0 Q121.1,251.3 153.6,245.7 Q119.8,256.2 110.0,257.0 Z" fill="#B86B35"/>
+    <path d="M220.0,239.7 Q211.9,233.8 189.2,227.8 Q213.2,238.8 220.0,239.7 Z M220.0,239.7 Q213.0,228.8 193.5,217.8 Q214.2,238.0 220.0,239.7 Z M220.0,239.7 Q215.1,224.1 199.1,210.0 Q215.0,237.9 220.0,239.7 Z M220.0,239.7 Q216.0,220.7 205.5,200.4 Q216.9,236.3 220.0,239.7 Z M220.0,239.7 Q220.2,218.8 220.6,197.8 Q220.1,236.5 220.0,239.7 Z M220.0,239.7 Q224.1,222.0 234.6,202.7 Q223.0,236.4 220.0,239.7 Z M220.0,239.7 Q226.5,225.1 244.3,210.1 Q225.3,237.3 220.0,239.7 Z M220.0,239.7 Q228.2,227.4 251.5,215.1 Q227.0,237.8 220.0,239.7 Z M220.0,239.7 Q228.7,234.9 256.9,230.6 Q228.7,239.2 220.0,239.7 Z" fill="#B86B35"/>
+    <path d="M320.0,243.7 Q311.2,239.1 286.4,234.6 Q312.6,243.0 320.0,243.7 Z M320.0,243.7 Q312.4,232.8 289.3,222.4 Q313.0,242.2 320.0,243.7 Z M320.0,243.7 Q314.0,229.6 297.5,215.1 Q315.1,241.4 320.0,243.7 Z M320.0,243.7 Q317.7,225.2 310.2,208.7 Q317.7,241.5 320.0,243.7 Z M320.0,243.7 Q319.5,226.2 318.0,209.7 Q319.5,241.3 320.0,243.7 Z M320.0,243.7 Q323.0,224.1 332.1,205.3 Q322.8,241.0 320.0,243.7 Z M320.0,243.7 Q325.1,228.6 341.3,214.8 Q325.0,241.8 320.0,243.7 Z M320.0,243.7 Q327.2,233.4 348.2,223.2 Q326.4,242.2 320.0,243.7 Z M320.0,243.7 Q329.8,237.0 355.3,229.8 Q327.5,242.5 320.0,243.7 Z" fill="#B86B35"/>
+    <path d="M410.0,261.5 Q398.3,252.4 363.8,243.5 Q399.6,260.1 410.0,261.5 Z M410.0,261.5 Q399.7,245.3 367.0,230.4 Q399.9,259.4 410.0,261.5 Z M410.0,261.5 Q402.7,242.1 381.3,223.2 Q403.5,258.6 410.0,261.5 Z M410.0,261.5 Q405.3,235.8 390.5,212.1 Q405.4,258.2 410.0,261.5 Z M410.0,261.5 Q409.4,235.0 407.8,206.8 Q409.5,256.7 410.0,261.5 Z M410.0,261.5 Q415.1,237.4 429.2,213.0 Q414.2,257.6 410.0,261.5 Z M410.0,261.5 Q415.7,240.2 435.3,221.7 Q416.1,259.2 410.0,261.5 Z M410.0,261.5 Q420.3,245.4 450.4,229.7 Q419.1,259.1 410.0,261.5 Z M410.0,261.5 Q423.3,253.8 458.6,245.7 Q420.4,260.1 410.0,261.5 Z" fill="#B86B35"/>
+  </svg>
   <div class="wrap">
     <div class="section-head">
       <span class="eyebrow">01 — La Historia</span>
@@ -371,23 +406,13 @@
       </div>
       <div class="feat">
         <div class="num">Ⅲ</div>
-        <h4>Partituras por lote</h4>
-        <p>Ediciones limitadas con una partitura musical distinta impresa en cada etiqueta.</p>
-      </div>
-      <div class="feat">
-        <div class="num">Ⅳ</div>
         <h4>Apadrina un agave</h4>
         <p>Programa de fidelización: adopta una planta en Jalisco durante sus 7 años de crecimiento.</p>
       </div>
       <div class="feat">
-        <div class="num">Ⅴ</div>
+        <div class="num">Ⅳ</div>
         <h4>Caja Premium</h4>
         <p>Incluye dos copas de barro artesanal y acceso a un concierto virtual exclusivo.</p>
-      </div>
-      <div class="feat">
-        <div class="num">Ⅵ</div>
-        <h4>Denominación de Origen</h4>
-        <p>Certificación tequilera oficial del Consejo Regulador del Tequila, verificable en cada lote.</p>
       </div>
     </div>
   </div>
@@ -399,7 +424,7 @@
 
 <section class="cancion" id="cancion">
   <div class="wrap">
-    <span class="eyebrow">05 — Fonoteca de Marca</span>
+    <span class="eyebrow">04 — Fonoteca de Marca</span>
     <h2 style="margin-top:10px;font-size:clamp(28px,3.6vw,42px);max-width:640px;">La canción que Don Silvestre tocaba en Los Altos</h2>
     <p style="margin-top:18px;max-width:560px;color:rgba(253,251,247,.7);font-size:15.5px;">
       Cada etiqueta lleva un código QR que reproduce la melodía original de su violín — la misma que cruzó el Atlántico en 1923. Escúchala aquí:
@@ -415,7 +440,7 @@
         <div class="waveform" id="waveform"></div>
       </div>
       <div class="qr-block">
-        <img src="data:image/png;base64,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" alt="Código QR de la canción">
+        <img src="data:image/png;base64,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" alt="Código QR de la canción">
         <div class="qr-caption">Escanea desde la etiqueta<br>para escuchar en tu celular</div>
       </div>
     </div>
@@ -424,7 +449,7 @@
 
 <section class="mercado" id="mercado">
   <div class="wrap">
-    <span class="eyebrow">04 — Posicionamiento</span>
+    <span class="eyebrow">05 — Posicionamiento</span>
     <h2 style="margin-top:10px;font-size:clamp(28px,3.6vw,42px);max-width:640px;">No es tequila de fiesta. Es tequila de sobremesa.</h2>
     <div class="mercado-grid" style="margin-top:56px;">
       <div>
@@ -467,8 +492,8 @@
       </div>
       <div class="foot-col">
         <h5>Contacto</h5>
-        <p>ellegadotequila.com</p>
-        <p>@tequila.ellegado</p>
+        <p><a href="https://ellegadotequila.com" target="_blank" rel="noopener">ellegadotequila.com</a></p>
+        <p><a href="https://instagram.com/tequila.ellegado" target="_blank" rel="noopener">@tequila.ellegado</a></p>
         <p>El Legado Espirituosos S.L.<br>C/ Serrano 45, 28001 Madrid</p>
       </div>
       <div class="foot-col">

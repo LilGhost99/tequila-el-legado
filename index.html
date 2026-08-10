@@ -267,6 +267,12 @@
   .testimonio p{font-family:var(--serif);font-style:italic;font-size:21px;line-height:1.55;color:rgba(253,251,247,.92);}
   .testimonio .autor{margin-top:18px;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--cobre-claro);}
   .testimonio .autor span{display:block;text-transform:none;letter-spacing:0;color:rgba(253,251,247,.55);font-size:13px;margin-top:3px;}
+  .testimonios-stack{display:flex;flex-direction:column;gap:44px;}
+  .testimonio-video{border-left:2px solid var(--cobre);padding-left:26px;}
+  .testimonio-video .cata-tag{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--cobre-claro);margin-bottom:14px;}
+  .testimonio-video video{width:100%;max-width:260px;display:block;border-radius:2px;background:#000;}
+  .testimonio-video .autor{margin-top:16px;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--cobre-claro);}
+  .testimonio-video .autor span{display:block;text-transform:none;letter-spacing:0;color:rgba(253,251,247,.55);font-size:13px;margin-top:3px;}
   .map-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
   .map-card{border:1px solid rgba(253,251,247,.18);}
   .map-card iframe{width:100%;height:200px;border:0;display:block;filter:grayscale(1) invert(.92) contrast(.9);}
@@ -297,7 +303,7 @@
 
   @media(max-width:860px){
     nav ul{display:none;}
-    .historia-grid,.prod-grid,.mercado-grid{grid-template-columns:1fr;}
+    .historia-grid,.prod-grid,.mercado-grid,.dist-grid{grid-template-columns:1fr;}
     .feat-grid{grid-template-columns:1fr;}
     .foot-grid{grid-template-columns:1fr;gap:40px;}
     section{padding:80px 0;}
@@ -531,9 +537,19 @@
     <span class="eyebrow reveal">06 — Dónde Encontrarlo</span>
     <h2 class="reveal" style="margin-top:10px;font-size:clamp(28px,3.6vw,42px);max-width:640px;">De Los Altos de Jalisco a la mesa en Madrid y Barcelona</h2>
     <div class="dist-grid" style="margin-top:56px;">
-      <div class="testimonio reveal">
-        <p>"En la carta lo presentamos como digestivo, no como shot. Los clientes se sorprenden — esperan tequila de fiesta y reciben algo para tomar despacio, como un buen brandy."</p>
-        <div class="autor">Marcos Iribarren <span>Sumiller, coctelería de autor · Madrid</span></div>
+      <div class="testimonios-stack">
+        <div class="testimonio reveal">
+          <p>"En la carta lo presentamos como digestivo, no como shot. Los clientes se sorprenden — esperan tequila de fiesta y reciben algo para tomar despacio, como un buen brandy."</p>
+          <div class="autor">Marcos Iribarren <span>Sumiller, coctelería de autor · Madrid</span></div>
+        </div>
+        <div class="testimonio-video reveal">
+          <div class="cata-tag">Cata en Casa</div>
+          <video controls preload="metadata" poster="jose-luis-poster.jpg" playsinline>
+            <source src="jose-luis-testimonio.mp4" type="video/mp4">
+            Tu navegador no soporta el elemento de video.
+          </video>
+          <div class="autor">Jose Luis <span>Cliente</span></div>
+        </div>
       </div>
       <div class="map-grid reveal">
         <div class="map-card">

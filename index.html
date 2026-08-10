@@ -473,12 +473,13 @@
     </p>
     <div class="cancion-grid reveal" style="margin-top:56px;">
       <div class="player-card">
-        <button class="play-btn loading" id="playBtn" aria-label="Reproducir">
+        <audio id="cancionAudio" src="cancion.mp3" preload="metadata"></audio>
+        <button class="play-btn" id="playBtn" aria-label="Reproducir">
           <svg id="playIcon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
           <svg id="pauseIcon" viewBox="0 0 24 24" style="display:none;"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
         </button>
         <div class="player-title">El Son de Don Silvestre</div>
-        <div class="player-sub">Vals · Violín solo · 0:24</div>
+        <div class="player-sub" id="playerSub">Violín solo</div>
         <div class="waveform" id="waveform"></div>
       </div>
       <div class="qr-block">
@@ -626,7 +627,6 @@
   </div>
 </footer>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.7.77/Tone.js"></script>
 <script>
   const header = document.getElementById('siteHeader');
   window.addEventListener('scroll', () => {
@@ -644,7 +644,7 @@
   }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
   document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
-  // --- "El Son de Don Silvestre": melodía generada, estilo vals melancólico ---
+  // --- "El Son de Don Silvestre": reproductor de audio real ---
   const waveform = document.getElementById('waveform');
   const BARCOUNT = 28;
   for (let i = 0; i < BARCOUNT; i++) {
@@ -654,92 +654,57 @@
   }
   const bars = waveform.querySelectorAll('span');
 
-  const reverb = new Tone.Reverb({ decay: 3.2, wet: 0.3 }).toDestination();
+  const audio = document.getElementById('cancionAudio');
   const playBtn = document.getElementById('playBtn');
-  const playerSub = document.querySelector('.player-sub');
-  let sampleReady = false;
-  playBtn.classList.add('loading');
-  playerSub.textContent = 'Cargando muestras de violín…';
-
-  const violin = new Tone.Sampler({
-    urls: {
-      G3: "G3.mp3", A3: "A3.mp3",
-      C4: "C4.mp3", E4: "E4.mp3", G4: "G4.mp3", A4: "A4.mp3",
-      C5: "C5.mp3", E5: "E5.mp3", G5: "G5.mp3", A5: "A5.mp3",
-      C6: "C6.mp3", E6: "E6.mp3", G6: "G6.mp3", A6: "A6.mp3",
-      C7: "C7.mp3"
-    },
-    baseUrl: "https://cdn.jsdelivr.net/npm/tonejs-instrument-violin-mp3@1.1.1/",
-    onload: () => {
-      sampleReady = true;
-      playBtn.classList.remove('loading');
-      playerSub.textContent = 'Vals · Violín solo · 0:24';
-    },
-    release: 0.9
-  }).connect(reverb);
-  violin.volume.value = -4;
-
-  // Vals en Re menor, 3/4 — motivo nostálgico, 8 compases, en loop
-  const melody = [
-    ['D4','8n'], ['F4','8n'], ['A4','4n'],
-    ['G4','8n'], ['F4','8n'], ['E4','4n'],
-    ['D4','8n'], ['E4','8n'], ['F4','4n'],
-    ['A3','4n'], ['D4','4n'],
-    ['E4','8n'], ['G4','8n'], ['F4','4n'],
-    ['D4','8n'], ['C4','8n'], ['D4','4n'],
-    ['A3','8n'], ['C4','8n'], ['D4','4n'],
-    ['F4','4n'], ['E4','4n'], ['D4','2n']
-  ];
-
-  let part = null;
-  let playing = false;
+  const playerSub = document.getElementById('playerSub');
   const playIcon = document.getElementById('playIcon');
   const pauseIcon = document.getElementById('pauseIcon');
 
+  function formatTime(sec){
+    if (!isFinite(sec)) return '';
+    const m = Math.floor(sec/60);
+    const s = Math.floor(sec%60).toString().padStart(2,'0');
+    return `${m}:${s}`;
+  }
+
+  function updateDuration(){
+    playerSub.textContent = `Violín solo · ${formatTime(audio.duration)}`;
+  }
+  if (audio.readyState >= 1) {
+    updateDuration();
+  } else {
+    audio.addEventListener('loadedmetadata', updateDuration);
+  }
+
   function animateBars(active){
     bars.forEach(b => {
-      if(active){
-        b.style.height = (4 + Math.random()*30) + 'px';
-      } else {
-        b.style.height = '4px';
-      }
+      b.style.height = active ? (4 + Math.random()*30) + 'px' : '4px';
     });
   }
   let barInterval = null;
 
-  playBtn.addEventListener('click', async () => {
-    if (!sampleReady) return;
-    await Tone.start();
-    if (!playing) {
-      Tone.Transport.bpm.value = 108;
-      let cursor = 0;
-      const events = melody.map(n => {
-        const dur = Tone.Time(n[1]).toSeconds();
-        const ev = [cursor, n];
-        cursor += dur;
-        return ev;
-      });
-      part = new Tone.Part((time, ev) => {
-        violin.triggerAttackRelease(ev[0], ev[1], time);
-      }, events).start(0);
-      part.loop = true;
-      part.loopEnd = cursor;
-
-      Tone.Transport.start();
-      playing = true;
-      playIcon.style.display = 'none';
-      pauseIcon.style.display = 'block';
-      barInterval = setInterval(() => animateBars(true), 130);
+  playBtn.addEventListener('click', () => {
+    if (audio.paused) {
+      audio.play();
     } else {
-      Tone.Transport.stop();
-      if (part) part.dispose();
-      playing = false;
-      playIcon.style.display = 'block';
-      pauseIcon.style.display = 'none';
-      clearInterval(barInterval);
-      animateBars(false);
+      audio.pause();
     }
   });
+
+  audio.addEventListener('play', () => {
+    playIcon.style.display = 'none';
+    pauseIcon.style.display = 'block';
+    barInterval = setInterval(() => animateBars(true), 130);
+  });
+
+  function stopVisuals(){
+    playIcon.style.display = 'block';
+    pauseIcon.style.display = 'none';
+    clearInterval(barInterval);
+    animateBars(false);
+  }
+  audio.addEventListener('pause', stopVisuals);
+  audio.addEventListener('ended', stopVisuals);
 </script>
 
 </body>
